@@ -14,6 +14,12 @@ const apiBaseUrl = codespaceName
 
 const app = express();
 
+app.use((_req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 app.use(express.json());
 
 app.get('/api/health', (_req, res) => {
